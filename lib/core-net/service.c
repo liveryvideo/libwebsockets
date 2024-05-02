@@ -835,7 +835,9 @@ lws_service(struct lws_context *context, int timeout_ms)
 
 		return 1;
 	}
+	lws_context_lock(context, __func__);
 	n = lws_plat_service(context, timeout_ms);
+	lws_context_unlock(context);
 
 	if (n != -1)
 		pt->inside_service = 0;
