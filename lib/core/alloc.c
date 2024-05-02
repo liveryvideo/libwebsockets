@@ -27,9 +27,10 @@
 #if defined(LWS_HAVE_MALLOC_USABLE_SIZE)
 
 #include <malloc.h>
+#include <stdatomic.h>
 
 /* the heap is processwide */
-static size_t allocated;
+static atomic_size_t allocated;
 #endif
 
 #if defined(LWS_PLAT_OPTEE)
